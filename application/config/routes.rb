@@ -4,4 +4,10 @@ Rails.application.routes.draw do
       post :github_callback
     end
   end
+
+  namespace :admin do
+    namespace :spot_fleet do
+      resources :requests, only: [:index]
+    end
+  end
 end

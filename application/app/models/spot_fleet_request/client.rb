@@ -10,9 +10,11 @@ module SpotFleetRequest
       Rails.logger.info "spot fleet request is accepted! request_id: #{response.spot_fleet_request_id}"
     end
 
-    def describe(spot_fleet_request_id)
-      response = ec2.describe_spot_fleet_requests({ spot_fleet_request_ids: [ spot_fleet_request_id ] })
+    def describe(spot_fleet_request_id = nil)
+      response = ec2.describe_spot_fleet_requests
+      # response = ec2.describe_spot_fleet_requests({ spot_fleet_request_ids: [ spot_fleet_request_id ] })
       Rails.logger.info response
+      response
     end
 
     def cancel(spot_fleet_request_id)
